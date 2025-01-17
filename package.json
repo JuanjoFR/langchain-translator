@@ -2,6 +2,7 @@
   "name": "langchain-translator",
   "version": "0.1.0",
   "private": true,
+  "description": "Next.js project using shadcn/ui for AI translation with Langchain",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
