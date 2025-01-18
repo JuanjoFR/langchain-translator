@@ -1,20 +1,37 @@
+"use client";
+
 import Image from "next/image";
-import { ChatOpenAI } from "@langchain/openai";
-import { HumanMessage, SystemMessage } from "@langchain/core/messages";
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
 
-const messages = [
-  new SystemMessage("Translate the following from English into Italian"),
-  new HumanMessage("hi!"),
-];
+export default function Home() {
+  const [translation, setTranslation] = useState("");
 
-export default async function Home() {
-  const model = new ChatOpenAI({ model: "gpt-4o-mini" });
-  const baseMessageChunk = await model.invoke(messages);
+  const mutation = useMutation({
+    mutationFn: async (text: string) => {
+      const response = await fetch("/api/translate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text }),
+      });
+      const data = await response.json();
+      return data.translatedText;
+    },
+    onSuccess: (data) => {
+      setTranslation(data);
+    },
+  });
 
-  console.log(baseMessageChunk);
+  const handleTranslate = async () => {
+    mutation.mutate("hi!");
+  };
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <button onClick={handleTranslate}>Translate</button>
+      {translation && <p>{translation}</p>}
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
