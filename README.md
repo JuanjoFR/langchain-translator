@@ -6,7 +6,7 @@ This project uses Next.js with shadcn/ui for creating an AI translator with Lang
 
 Watch the video below to see an example usage of the app, translating a phrase into multiple languages:
 
-![Langchain Translator Demo](public/langchain-translator.webm)
+[langchain-translator.webm](https://github.com/user-attachments/assets/0cba5356-5823-43c4-bb78-415371158246)
 
 ## Getting Started
 
