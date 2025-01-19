@@ -2,6 +2,12 @@
 
 This project uses Next.js with shadcn/ui for creating an AI translator with Langchain. It was created following the tutorial in this article: [Langchain LLM Chain Tutorial](https://js.langchain.com/docs/tutorials/llm_chain/). The project uses OpenAI as the chat model.
 
+## Video Demonstration
+
+Watch the video below to see an example usage of the app, translating a phrase into multiple languages:
+
+![Langchain Translator Demo](public/langchain-translator.webm)
+
 ## Getting Started
 
 First, create a `.env.local` file with your API keys by using `.env.local.template` as a template:
